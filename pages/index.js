@@ -9,23 +9,31 @@ export default function Home() {
     const router = useRouter()
     const [menu, setMenu] = useState(false)
     const [arr, setArr] = useState([
-        "square" ,
-        "circle" ,
-        "oval" ,
-        "trapezoid" ,
-        "rectangle" ,
+        "square",
+        "circle",
+        "oval",
+        "trapezoid",
+        "rectangle",
         "parallelogram"
-
     ])
     const move = () => {
-        // let arr2 = arr;
-        // let arr1 = arr[0]
-        // arr2.push(arr1)
-        setArr('arr')
+        let arr1 = arr[0]
+        let arr2 = arr;
+        let arr3 = [];
+        for(let key in arr2) {
+            let row = arr2[key];
+            if(key != 0) {
+                arr3.push(row)
+            }
+        }
+        arr3.push(arr1);
+        setArr(arr3)
         // console.log(arr)
 
     }
+
     console.log(arr)
+
     return ( 
     <div className = { styles.container }>
         <Head >
@@ -138,7 +146,7 @@ export default function Home() {
                 </a> */}
 
                 {
-                    arr.map((item,i) => {
+                    arr.slice(3).map((item,i) => {
                         return(
                             <a href="" className='a-button' key={i}>
                             <div className="box">

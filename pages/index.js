@@ -28,11 +28,49 @@ export default function Home() {
         }
         arr3.push(arr1);
         setArr(arr3)
-        // console.log(arr)
 
     }
 
-    console.log(arr)
+    const move2 = () => {
+        let count = arr.length-1
+        let arr1 = arr[count]
+        let arr2 = arr;
+        let arr3 = [];
+        
+        arr3.push(arr1);
+        for(let key in arr2) {
+            let row = arr2[key];
+            if(key != count) {
+                arr3.push(row)
+            }
+        }
+        
+        setArr(arr3)
+    }
+
+    const move3 = () => {
+        let count = arr.length-1
+        let arr1 = arr[count]
+        let arr2 = arr;
+        let arr3 = [];
+        
+        // arr3.push(arr1);
+        for(let key in arr2) {
+            let row = arr2[key];
+            if(key > 2) {
+                arr3.push(row)
+            }
+        }
+
+        for(let key in arr2) {
+            let row = arr2[key];
+            if(key < 3) {
+                arr3.push(row)
+            }
+        }
+        setArr(arr3)
+    }
+console.log(arr)
 
     return ( 
     <div className = { styles.container }>
@@ -73,12 +111,12 @@ export default function Home() {
                 </button>
                 
                 <div className="box-pd">
-                <button href="" id='two'>
+                <button href="" id='two' onClick={() => move3()}>
                     <div className="box">
                         <div id="triangle-down"></div>
                     </div>
                 </button>
-                <button href="" id='three'>
+                <button href="" id='three' onClick={() => move3()}>
                     <div className="box">
                         <div id="triangle-up"></div>
                     </div>
@@ -89,7 +127,7 @@ export default function Home() {
 
                 <button href="" id='four'>
                 <div className="box">
-                <div id="triangle-right"></div>
+                <div id="triangle-right" onClick={() => move2()}></div>
                 <div className="txt">{router.locale==='th' ? 'เลือกรูปแบบ' :'Move Shape'}</div>
                 </div>
                 </button>
